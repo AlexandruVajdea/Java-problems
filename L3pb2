@@ -1,0 +1,36 @@
+package myfirst;
+/*2. Cititi un sir de caractere de la intrarea standard. Transformati sirul intr-un tablou de caractere.
+ *   Cautati in acest tablou un caracter specificat in program. Afisati numarul de aparitii.
+    */
+
+import java.util.Scanner;
+
+
+public class transformare {
+
+        public static void main(String[] args) {
+                
+        int cout = 0;
+        try (Scanner scan = new Scanner(System.in))
+    {
+                System.out.println("Introduceti sirul de carctere:");
+                String sir= scan.next();
+                
+                
+                System.out.println("Caracterul căutat:");
+                char c = scan.next().charAt(0);
+                
+                char tablou[] = sir.toCharArray();                
+                for(char i : tablou) 
+                   {
+                        if(c == i)
+                           {
+                                cout++;
+                            }
+                        
+                   }
+        }
+        System.out.println("numarul de aparitii : " +cout+ " ori");
+        
+           }
+        }
