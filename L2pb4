@@ -1,0 +1,19 @@
+package myfirst;
+
+//Scrieti o aplicatie Java in care cititi de la tastatura un numar intreg si afisati toti divizorii
+//numarului respectiv
+import java.util.Scanner;
+public class Main {
+  public static void main(String args[]) {
+
+      System.out.printf("Numarul:");
+      Scanner input = new Scanner(System.in);
+      int n = input.nextInt();
+      int i;
+      System.out.println("Divizorii numarului sunt: ");
+      for ( i = 2; i <= n; i++)
+         if(n%i==0)
+          System.out.print(i+" ");
+
+  }
+}
