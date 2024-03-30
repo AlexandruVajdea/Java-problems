@@ -1,0 +1,21 @@
+package myfirst;
+
+//Scrieti o aplicatie Java in care se citesc de la tastatura 2 valori intregi si se afiseaza cel mai
+//mare divizor comun al numerelor
+import java.util.Scanner;
+public class Main {
+  public static void main(String args[] ) {
+  Scanner scan = new Scanner(System.in);
+  System.out.print("Doua numere intregi: ");
+
+  int n= scan.nextInt();
+  int m= scan.nextInt();
+
+  while(n!=m)
+  if(n>m)
+      n-=m;
+  else
+      m-=n;
+  System.out.println("cel mai mare divizor comun este: "+m);
+  }
+}
