@@ -1,0 +1,31 @@
+package myfirst;
+import java.util.Scanner;
+/*7. Sa se citeasca de la consola o valoare intreaga mai mare decat 16.777.216.
+Sa se foloseasca masti pe biti pentru a izola fiecare din cei 4 octeti ai valorii citite. 
+Afisati atat valoarea initiala cat si valorile izolate in zecimal, binar si hexazecimal.*/
+public class izolare{
+    public static void main(String[] args) {
+        // Citirea valorii întregi mai mare decât 16.777.216
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduceti o valoare intreaga mai mare decat 16.777.216: ");
+        int valoare = scanner.nextInt();
+        
+        // Verificarea dacă valoarea introdusă este mai mare decât 16.777.216
+        if (valoare <= 16777216) {
+            System.out.println("Valoarea introdusa nu este mai mare decat 16.777.216.");
+        } else {
+            // Izolarea fiecărui octet folosind măști pe biți
+            int octet1 = (valoare >> 24) & 0xFF;
+            int octet2 = (valoare >> 16) & 0xFF;
+            int octet3 = (valoare >> 8) & 0xFF;
+            int octet4 = valoare & 0xFF;
+            
+            // Afișarea valorilor în zecimal, binar și hexazecimal
+            System.out.println("Valoarea initiala: " + valoare);
+            System.out.println("Octetul 1: " + octet1 + " (binar: " + Integer.toBinaryString(octet1) + ", hexazecimal: 0x" + Integer.toHexString(octet1) + ")");
+            System.out.println("Octetul 2: " + octet2 + " (binar: " + Integer.toBinaryString(octet2) + ", hexazecimal: 0x" + Integer.toHexString(octet2) + ")");
+            System.out.println("Octetul 3: " + octet3 + " (binar: " + Integer.toBinaryString(octet3) + ", hexazecimal: 0x" + Integer.toHexString(octet3) + ")");
+            System.out.println("Octetul 4: " + octet4 + " (binar: " + Integer.toBinaryString(octet4) + ", hexazecimal: 0x" + Integer.toHexString(octet4) + ")");
+        }
+    }
+}
