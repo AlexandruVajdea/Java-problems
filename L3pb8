@@ -1,0 +1,103 @@
+package myfirst;
+import java.util.Scanner;
+/*8. Sa se citeasca de la tastatura elementele unei matrice de valori intregi cu m linii (m preluat din linia de comanda). Pentru fiecare linie numarul de elemente va creste cu 1 fata de linia precedenta, prima linie avand doar un element.
+Sa se implementeze metodele care:
+�' afiseaza matricea linie cu linie, apoi coloana cu coloana;
+�' elimina din matrice (egalizeaza cu 0) valorile care nu sunt cuprinse intre doua limite specificate
+�' afiseaza vecinii existenti ai unui element a carui indecsi sunt trimisi ca parametri*/
+public class MatriceDinamica {
+
+    private int[][] matrice;
+    private int m;
+
+    // Constructor pentru a inițializa matricea
+    public MatriceDinamica(int m) {
+        this.m = m;
+        matrice = new int[m][];
+        for (int i = 0; i < m; i++) {
+            matrice[i] = new int[i + 1];
+        }
+    }
+
+    // Metoda pentru citirea matricei
+    public void citesteMatrice() {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                matrice[i][j] = scanner.nextInt();
+            }
+        }
+    }
+
+    // Afișarea matricei
+    public void afiseazaMatrice() {
+        System.out.println("Afisare linie cu linie:");
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                System.out.print(matrice[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Afisare coloana cu coloana:");
+        for (int j = 0; j < m; j++) {
+            for (int i = 0; i <= j; i++) {
+                if (i < matrice.length && j < matrice[i].length) {
+                    System.out.print(matrice[i][j] + " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    // Metoda pentru eliminarea valorilor dintr-un interval
+    public void eliminaDinInterval(int min, int max) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                if (matrice[i][j] < min || matrice[i][j] > max) {
+                    matrice[i][j] = 0;
+                }
+            }
+        }
+    }
+
+    // Afișarea vecinilor unui element
+    public void afiseazaVecini(int linie, int coloana) {
+        System.out.println("Vecinii elementului [" + linie + "][" + coloana + "]:");
+        int[] dx = {-1, -1, 0, 0, 1, 1};
+        int[] dy = {-1, 0, -1, 1, 0, 1};
+
+        for (int k = 0; k < 6; k++) {
+            int nouaLinie = linie + dx[k];
+            int nouaColoana = coloana + dy[k];
+
+            if (nouaLinie >= 0 && nouaLinie < m && nouaColoana >= 0 && nouaColoana < matrice[nouaLinie].length) {
+                System.out.println(matrice[nouaLinie][nouaColoana]);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduceti numarul de linii m: ");
+        int m = scanner.nextInt();
+
+        MatriceDinamica matrice = new MatriceDinamica(m);
+
+        System.out.println("Introduceti elementele matricei:");
+        matrice.citesteMatrice();
+
+        matrice.afiseazaMatrice();
+
+        System.out.println("Introduceti limitele pentru eliminarea valorilor (min max):");
+        int min = scanner.nextInt();
+        int max = scanner.nextInt();
+        matrice.eliminaDinInterval(min, max);
+        matrice.afiseazaMatrice();
+
+        System.out.println("Introduceti indicii elementului pentru a afisa vecinii (linie coloana):");
+        int linie = scanner.nextInt();
+        int coloana = scanner.nextInt();
+        matrice.afiseazaVecini(linie, coloana);
+    }
+}
