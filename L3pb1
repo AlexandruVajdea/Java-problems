@@ -1,0 +1,57 @@
+package myfirst;
+/*1: Scrieti o aplicatie Java in care cititi o valoare intreaga. In cazul in care valoarea intreaga este cuprinsa intre 1-12 
+sa se afiseze luna corespunzatoare. Considerati cazul in care valoarea introdusa este un sir de caractere si daca 
+aceasta corespunde unei luni din an afisati valoarea numerica a lunii.*/
+import java.util.Scanner;
+
+public class luna {
+        public static void main(String[] args) {
+                try (Scanner scan = new Scanner(System.in)) {
+                        int x;
+                        System.out.println("Valoarea întreagă:");
+                        x=scan.nextInt();
+                        String  luna;
+                        
+                        switch (x) {
+                                case 1: luna = "Ianuarie"; break;
+                                case 2: luna = "Februarie"; break;
+                                case 3: luna = "Martie"; break;
+                                case 4: luna = "Aprilie"; break;
+                                case 5: luna = "Mai"; break;
+                                case 6: luna = "Iunie"; break;
+                                case 7: luna = "Iulie"; break;
+                                case 8: luna= "August"; break;
+                                case 9: luna="Seprembrie"; break;
+                                case 10:luna="Octombrie"; break;
+                                case 11: luna="Noiembrie"; break;
+                                case 12: luna="Decembrie";break;
+                                default: luna = "Nu coencide cu o luna"; break;
+                        }
+                        System.out.println(luna);
+
+                        System.out.println("Introduceti luna in litere:");
+                        scan.nextLine();
+                        luna=scan.next();
+                        
+                        switch (luna) { 
+                                case "Ianuarie":         x = 1; break; 
+                                case "Februarie":         x = 2; break; 
+                                case "Martie":  x = 3; break; 
+                                case "Aprilie":         x = 4; break; 
+                                case "Mai":         x= 5; break; 
+                                case "Iunie":         x = 6; break; 
+                                case "Iulie":         x= 7; break; 
+                                case "August":         x= 8; break;
+                                case "Septembrie":         x= 9; break; 
+                                case "Octombrie":         x= 10; break;
+                                case "Noiembrie":         x= 11; break;
+                                case "Decembrie":         x= 12; break; 
+                                default:                 x = 0; 
+                        } 
+                        if(x!=0)
+                                System.out.println("Luna "+x);
+                        else
+                                System.out.println("Luna gresita");
+                }
+        }
+}
